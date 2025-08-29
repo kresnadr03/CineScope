@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# CineScope — UI-Heavy Movie App (React + Bootstrap + TMDB)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikasi **frontend-only** untuk menunjukkan skill **UI/UX kompleks, animasi, dan interaksi**. Terinspirasi layout ala Netflix: **Hero**, **carousels**, **grid kartu**, **search dengan debounce + infinite scroll**, **detail + trailer**, **dark/light mode**, dan **page transitions** yang halus.
 
-## Available Scripts
+> **Catatan:** Proyek ini hanya frontend. Data diambil dari **TMDB API**.
+> This product uses the TMDB API but is not endorsed or certified by TMDB.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Fitur Utama
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Home**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  * Hero section dengan backdrop & call-to-action
+  * **3 Carousels**: Trending, Top Rated, Now Playing
+  * **Skeleton shimmer** saat loading
 
-### `npm test`
+* **Search**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * **Debounce** input (fetch otomatis ketika user berhenti mengetik)
+  * **Infinite scroll** (auto load halaman berikutnya)
+  * Filter **genre** (client-side)
+  * Empty state & loading state yang jelas
 
-### `npm run build`
+* **Detail Film**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  * Backdrop + ringkasan, **runtime**, **rating**, **genre**
+  * **Trailer modal (YouTube)** jika tersedia
+  * **Recommendations** (carousel)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **UX/Animations**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * **Dark/Light mode** (persist di `localStorage`)
+  * **Page transition** (Framer Motion)
+  * **Hover tilt 3D** di kartu film
+  * Focus ring aksesibel, lazy-load gambar, dan **prefers-reduced-motion** support
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧰 Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **React 18**, **React Router 6**
+* **Bootstrap 5.3** (`react-bootstrap`)
+* **Framer Motion** (animasi)
+* **Axios** (HTTP client)
+* **TMDB v3 API**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Quick Start
 
-## Learn More
+1. **Clone** & masuk ke folder proyek
+2. **Isi environment** (file `.env` sudah disertakan dengan placeholder):
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```env
+   REACT_APP_TMDB_KEY=YOUR_TMDB_KEY_HERE
+   REACT_APP_TMDB_IMG_BASE=https://image.tmdb.org/t/p
+   ```
+3. **Install & run**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+   npm start
+   ```
+4. Buka di browser: `http://localhost:3000`
 
-### Code Splitting
+> **TMDB Key:** daftar gratis di dashboard TMDB, lalu masukkan ke `.env`.
+> *Pada repo ini, `.env` memang ikut di-commit tapi hanya berisi **placeholder** (bukan key asli).*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🧪 Kualitas & Aksesibilitas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **Skeleton shimmer** custom & **loading placeholders**
+* **Focus ring** yang jelas (`:focus-visible`)
+* **Reduced motion** support untuk user dengan `prefers-reduced-motion`
+* **Lazy load** poster (`loading="lazy"`) & **preconnect** ke `image.tmdb.org`
+* **Error/empty states** di Search & Detail
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🙌 Atribusi
 
-### Advanced Configuration
+* Data & gambar oleh **The Movie Database (TMDB)**
+  *This product uses the TMDB API but is not endorsed or certified by TMDB.*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📷 Preview (tambahkan screenshot sendiri)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Scroll Trending](screenshots/scroll_trending.gif)
+![Scroll Top Rated](screenshots/scroll_toprated.gif)
+![Scroll Now Playing](screenshots/scroll_nowplaying.gif)
+![Dark Mode](screenshots/dark_mode.gif)
+![Details](screenshots/details.gif)
+![Search](screenshots/search.gif)
+```
