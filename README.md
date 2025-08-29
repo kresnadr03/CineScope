@@ -86,12 +86,18 @@ Aplikasi **frontend-only** untuk menunjukkan skill **UI/UX kompleks, animasi, da
 
 ---
 
-## 📷 Preview (tambahkan screenshot sendiri)
+## 📷 Preview
 
+Trending
 ![Scroll Trending](screenshots/scroll_trending.gif)
+Top Rated
 ![Scroll Top Rated](screenshots/scroll_toprated.gif)
+Now Playing
 ![Scroll Now Playing](screenshots/scroll_nowplaying.gif)
+Dark Mode
 ![Dark Mode](screenshots/dark_mode.gif)
+Details
 ![Details](screenshots/details.gif)
+Search
 ![Search](screenshots/search.gif)
 ```
