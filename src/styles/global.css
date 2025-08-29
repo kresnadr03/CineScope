@@ -1,0 +1,92 @@
+/* ========= Global, theme-aware ========= */
+html, body, #root {
+  height: 100%;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+a { color: inherit; }
+a:hover { text-decoration: underline; }
+
+/* Navbar blur saat scroll, theme-aware dengan fallback */
+.navbar-scrolled {
+  backdrop-filter: blur(8px);
+  background-color: rgba(22, 22, 22, 0.75) !important; /* fallback */
+  transition: background-color .25s ease, backdrop-filter .25s ease;
+}
+@supports (background-color: color-mix(in oklab, white, black)) {
+  .navbar-scrolled {
+    background-color: color-mix(in oklab, var(--bs-body-bg), transparent 25%) !important;
+  }
+}
+
+/* Layout wrapper */
+.main-wrap {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1 0 auto; }
+
+/* ===== Hero ===== */
+.hero-wrap { position: relative; }
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; filter: brightness(.6) saturate(1.1);
+  transform: scale(1.02);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.65) 70%, rgba(0,0,0,.9) 100%);
+}
+
+/* ===== Utilities ===== */
+.ratio-2x3 { --bs-aspect-ratio: calc(3/2 * 100%); }
+
+/* ===== Poster Card ===== */
+.poster-card .poster-img { width: 100%; height: 100%; object-fit: cover; }
+.poster-card .poster-gloss {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);
+  opacity: .4; transition: opacity .25s ease;
+}
+.poster-card:hover .poster-gloss { opacity: .1; }
+
+/* Aksesibilitas kecil */
+:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: 2px; }
+/* --- Skeleton shimmer --- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--bs-secondary-bg), transparent 20%);
+  border-radius: .5rem;
+}
+.skeleton::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.065), transparent);
+  animation: shimmer 1.15s infinite;
+}
+.skeleton-line { border-radius: .375rem; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+/* Focus ring yang jelas untuk keyboard users */
+:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+  border-radius: .5rem;
+}
+a:focus-visible { text-decoration: none; }
+/* Kurangi ring pada elemen kecil seperti icon-only */
+button:focus-visible { box-shadow: 0 0 0 .2rem color-mix(in oklab, var(--bs-primary), transparent 70%); }
+/* Besarkan hit area next/prev untuk mobile */
+.carousel-control-prev, .carousel-control-next {
+  width: 8%;
+}
+@media (max-width: 576px) {
+  .carousel-control-prev, .carousel-control-next { width: 12%; }
+}
+/* Hormati prefers-reduced-motion (kita sudah punya global, ini khusus carousel) */
+@media (prefers-reduced-motion: reduce) {
+  .carousel, .carousel-item { transition: none !important; }
+}
